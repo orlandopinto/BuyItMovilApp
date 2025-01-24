@@ -1,7 +1,7 @@
 import React from 'react';
 import { KeyboardTypeOptions, StyleSheet, TextInput, View } from 'react-native';
 import { colors } from '../../../config/theme/theme';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface Props {
      value: string
@@ -41,7 +41,7 @@ export default function CustomTextInput({ value, onChangeText, secureTextEntry, 
                {
                     icon
                          ?
-                         <Icon
+                         <Ionicons
                               name={icon}
                               color='#000'
                               size={30}

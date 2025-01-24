@@ -57,7 +57,7 @@ export default function LoginScreen({ navigation }: any) {
                          <Text style={styles.text}>¿Olvidaste tu contraseña?</Text>
                     </TouchableOpacity>
                </View>
-               <CustomButton variant='primary' title={'Iniciar sesión'} onPress={() => navigation.navigate('profile')} />
+               <CustomButton variant='primary' title={'Iniciar sesión'} onPress={() => navigation.navigate('home')} />
                <View style={globalStyles.row}>
                     <Text style={styles.text}>¿Tienes una cuenta? </Text>
                     <TouchableOpacity onPress={() => navigation.navigate('register')}>

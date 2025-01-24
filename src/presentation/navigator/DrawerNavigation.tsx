@@ -26,10 +26,10 @@ export const DrawerNavigation = () => {
                <Drawer.Navigator initialRouteName='start'
                     // drawerContent={(props) => <DrawerContent {...props} />}
                >
-                    <Drawer.Screen name="start" component={StartScreen} options={{ drawerItemStyle: { display: 'none' } }} />
-                    <Drawer.Screen name="login" component={LoginScreen} options={{ drawerItemStyle: { display: 'none' } }} />
-                    <Drawer.Screen name="register" component={RegisterScreen} options={{ drawerItemStyle: { display: 'none' } }} />
-                    <Drawer.Screen name="resetPassword" component={ResetPasswordScreen} options={{ drawerItemStyle: { display: 'none' } }} />
+                    <Drawer.Screen name="start" component={StartScreen} options={{ headerShown:false, drawerItemStyle: { display: 'none' } }} />
+                    <Drawer.Screen name="login" component={LoginScreen} options={{ headerShown: false, drawerItemStyle: { display: 'none' } }} />
+                    <Drawer.Screen name="register" component={RegisterScreen} options={{ headerShown: false, drawerItemStyle: { display: 'none' } }} />
+                    <Drawer.Screen name="resetPassword" component={ResetPasswordScreen} options={{ headerShown: false, drawerItemStyle: { display: 'none' } }} />
                     <Drawer.Screen name="home" component={HomeScreen} />
                     <Drawer.Screen name="dashboard" component={DashboardScreen} />
                     <Drawer.Screen name="profile" component={ProfileScreen} />

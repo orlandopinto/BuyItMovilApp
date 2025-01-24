@@ -2,6 +2,7 @@ import { useState } from "react"
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
 import { globalStyles } from "../../../config/theme/theme"
 import { Background, CustomButton, CustomHeader, CustomTextInput, Logo } from "../../components/ui"
+import Icon from "react-native-vector-icons/Ionicons"
 
 // import { emailValidator } from "../../../helpers/emailValidator"
 // import { nameValidator } from "../../../helpers/nameValidator"
@@ -32,6 +33,7 @@ export default function RegisterScreen({ navigation }: any) {
                <View style={globalStyles.centerContext} collapsable={false}>
                     <CustomHeader>Crear una cuenta</CustomHeader>
                </View>
+               <Icon name="airplane-outline" size={30} />
                <CustomTextInput
                     icon={'terminal-outline'}
                     placeholder="Nombre de usuario"

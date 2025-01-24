@@ -1,11 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
 import { globalStyles } from '../../../config/theme/theme';
-import { CustomButton, CustomHeader, Logo, Paragraph } from '../../components/ui';
+import { Background, CustomButton, CustomHeader, Logo, Paragraph } from '../../components/ui';
 
 export default function StartScreen({ navigation }: any) {
      return (
-          <View>
+          <Background>
                <View style={globalStyles.imageContainer} collapsable={false}>
                     <Logo />
                </View>
@@ -17,6 +17,6 @@ export default function StartScreen({ navigation }: any) {
                </Paragraph>
                <CustomButton variant='primary' title={'Iniciar sesión'} onPress={() => navigation.navigate('login')} />
                <CustomButton variant='secondary' title={'Regístrate'} onPress={() => navigation.navigate('register')} />
-          </View>
+          </Background>
      )
 }
