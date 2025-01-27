@@ -1,3 +1,4 @@
+import React from "react"
 import { TouchableOpacity, Image, StyleSheet, View } from "react-native"
 
 interface Props {
@@ -32,8 +33,8 @@ const styles = StyleSheet.create({
           margin: 10,
      },
      image: {
-          width: 30,
-          height: 30,
+          width: 25,
+          height: 25,
 
      },
 })

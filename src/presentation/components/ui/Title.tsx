@@ -1,6 +1,7 @@
-import { View, Text, StyleSheet } from "react-native"
-import { colors, globalStyles } from "../../../config/theme/theme"
+import React from "react"
+import { StyleSheet, Text, View } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
+import { globalStyles } from "../../../config/theme/theme"
 
 interface Props {
      text: string

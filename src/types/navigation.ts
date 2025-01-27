@@ -1,7 +1,7 @@
 import type { RouteProp } from "@react-navigation/native";
 
 export type MainStackParamList = {
-     startScreen: undefined;
+     splashScreen: undefined;
      login: undefined;
      register: undefined;
      resetPassword: undefined;
@@ -14,4 +14,4 @@ export type MainStackParamList = {
 
 
 
-export type DetailsScreenRouteProp = RouteProp<MainStackParamList, 'startScreen'>
+export type DetailsScreenRouteProp = RouteProp<MainStackParamList, 'splashScreen'>

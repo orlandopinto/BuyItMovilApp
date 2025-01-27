@@ -1,14 +1,18 @@
 import React from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { ButtonVariant, Variant } from '../../../config/theme/theme';
 
 interface Props {
      variant?: ButtonVariant;
      title: string;
-     onPress: any
+     onPress: any;
+     icon?: string;
+     iconPosition?: 'left' | 'right' | string;
+     buttonWidth?: 'auto' | '100%' | string;
 }
 
-export default function CustomButton({ variant = "primary", title, onPress, ...props }: Props) {
+export default function CustomButton({ variant = "primary", title, onPress, icon, iconPosition = 'left', buttonWidth = 'auto', ...props }: Props) {
      let extractColor: string = ''
      switch (variant) {
           case 'primary':
@@ -34,11 +38,37 @@ export default function CustomButton({ variant = "primary", title, onPress, ...p
                <Pressable style={({ pressed }) => [
                     {
                          backgroundColor: pressed ? '#3F8f7F' : extractColor,
-                    }, styles.button]}
+                         borderRadius: 3,
+                         boxShadow: '5px 5px 5px rgba(0, 0, 0, 0.1)',
+                    }]}
                     onPress={onPress}
                     {...props}
                >
-                    <Text style={styles.text}>{title}</Text>
+                    <View style={{ ...styles.button, width: buttonWidth === 'auto' ? 'auto' : '100%' }}>
+                         {
+                              icon === undefined
+                                   ?
+                                   <View style={{ ...styles.buttonContainer, width: buttonWidth === 'auto' ? 'auto' : '100%' }}>
+                                        <Text style={styles.text}>{title}</Text>
+                                   </View>
+                                   :
+                                   iconPosition === 'left'
+                                        ?
+                                        (
+                                             <View style={{ ...styles.buttonContainer, width: buttonWidth === 'auto' ? 'auto' : '100%' }}>
+                                                  <Icon name={icon} size={30} color="#fff" style={{ marginRight: 5 }} />
+                                                  <Text style={styles.text}>{title}</Text>
+                                             </View>
+                                        )
+                                        :
+                                        (
+                                             <View style={{ ...styles.buttonContainer, width: buttonWidth === 'auto' ? 'auto' : '100%' }}>
+                                                  <Text style={styles.text}>{title}</Text>
+                                                  <Icon name={icon} size={30} color="#fff" style={{ marginLeft: 5 }} />
+                                             </View>
+                                        )
+                         }
+                    </View>
                </Pressable>
           </View>
      )
@@ -48,25 +78,26 @@ const styles = StyleSheet.create({
      container: {
           flexDirection: 'row',
           alignItems: 'center',
+          justifyContent: 'center',
           paddingHorizontal: 10,
-          paddingVertical: 5
+          paddingVertical: 5,
      },
      button: {
-          width: '100%',
-          height: 50,
-
-          marginVertical: 10,
-          paddingVertical: 2,
-          verticalAlign: 'middle',
+          flexDirection: 'row',
+          padding: 8,
+          alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: 3,
+     },
+     buttonContainer: {
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: 30,
      },
      text: {
           color: '#fff',
-          width: '100%',
-          fontWeight: 'bold',
-          fontSize: 20,
+          fontSize: 17,
           lineHeight: 26,
-          textAlign: 'center'
+          paddingHorizontal: 10,
      },
 })

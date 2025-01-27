@@ -1,8 +1,16 @@
-import { Button, Text, View } from "react-native";
+import React from "react";
+import { Text, View } from "react-native";
+import { Background } from "../../components/ui";
 
-const ProfileScreen = ({ navigation }: any) => {
+const HomeScreen = ({ navigation }: any) => {
      return (
-          <View style={{ flex: 1, padding: 16, backgroundColor: '#fff' }}>
+          // <SafeAreaView style={{ flex: 1, backgroundColor: 'red' }}>
+          //      <View style={{ flex: 1, backgroundColor: '#fff' }}>
+          //           <CustomHeader title="Home" isHome={true} navigation={navigation} />
+          //      </View>
+
+          // </SafeAreaView>
+          <Background>
                <View
                     style={{
                          flex: 1,
@@ -15,12 +23,9 @@ const ProfileScreen = ({ navigation }: any) => {
                               textAlign: 'center',
                               marginBottom: 16
                          }}>
-                         PAGINA DE PERFIL
+                         HOME
                     </Text>
-                    <Button
-                         title="Go to Settings Page"
-                         onPress={() => navigation.navigate('settings')}
-                    />
+
                </View>
                <Text style={{ fontSize: 18, textAlign: 'center', color: 'grey' }}>
                     React Navigate Drawer
@@ -29,8 +34,8 @@ const ProfileScreen = ({ navigation }: any) => {
                     style={{ fontSize: 16, textAlign: 'center', color: 'grey' }}>
                     www.aboutreact.com
                </Text>
-          </View>
-     );
-};
+          </Background>
+     )
+}
 
-export default ProfileScreen
+export default HomeScreen

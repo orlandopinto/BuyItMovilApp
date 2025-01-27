@@ -1,66 +1,81 @@
-import { DrawerToggleButton } from "@react-navigation/drawer";
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import Icon from "react-native-vector-icons/Ionicons";
+import React, { useRef } from "react";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import ImageIcons from "../../icons/ImageIcons";
+import BottomSheet from '../ui/BottomSheet';
 
-export default function DrawerHeader(props: any) {
+interface Props {
+     title: string;
+     onPress: () => void;
+}
+
+export default function DrawerHeader({ title, onPress }: Props) {
+     const refBottomSheet = useRef();
      return (
-          <View style={headerStyles.container}>
-               <View style={{ alignItems: 'center', justifyContent: 'center', marginLeft: 15 }}>
-                    <DrawerToggleButton  {...props} />
-                    {/* <Icon name="menu-outline"
-                         size={35}
-                    onPress={() => {
-                         navigation.openDrawer()
-                    }}
-                    /> */}
+          <View style={styles.container}>
+               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <TouchableOpacity
+                         onPress={onPress}
+                         style={styles.iconContainer}>
+                         <Image
+                              resizeMode='contain'
+                              style={styles.iconMenu}
+                              source={ImageIcons.menu}
+                         />
+                    </TouchableOpacity>
+                    <Text style={{
+                         fontSize: 17,
+                         marginLeft: 0,
+                         fontWeight: 'bold',
+                    }}>{title}</Text>
                </View>
+               <TouchableOpacity style={styles.iconContainer} onPress={() => refBottomSheet.current?.open()} >
+                    <Image
+                         resizeMode='contain'
+                         style={styles.icon}
+                         source={ImageIcons.elipsis}
+                    />
 
+               </TouchableOpacity>
+               <BottomSheet bottomSheetRef={refBottomSheet} />
           </View>
      )
 }
-
-const headerStyles = StyleSheet.create({
-     container: {
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          backgroundColor: '#fff',
-          elevation: 5,
-          height: 50,
-          display: 'flex',
-          flexDirection: 'row',
-          paddingHorizontal: 20,
-          alignItems: 'center',
-          justifyContent: 'space-between'
-     }
-});
-
 
 const styles = StyleSheet.create({
      container: {
           flexDirection: 'row',
           alignItems: 'center',
-          paddingHorizontal: 10,
-          paddingVertical: 5
+          justifyContent: 'space-between',
+          marginTop: 0,
+          paddingTop: 15,
+          paddingHorizontal: 16,
      },
-     button: {
-          width: '100%',
-          height: 50,
-
-          marginVertical: 10,
-          paddingVertical: 2,
-          verticalAlign: 'middle',
+     iconContainer: {
+          height: 25,
+          width: 25,
+          borderRadius: 50,
+          alignItems: 'center',
           justifyContent: 'center',
-          borderRadius: 3,
+          backgroundColor: '#fff',
+          borderWidth: 1,
+          borderColor: '#e0e0e0',
+          paddingBottom: 50,
+          marginBottom: 10,
+          paddingLeft: 50,
+
      },
-     text: {
-          color: '#fff',
-          width: '100%',
-          fontWeight: 'bold',
-          fontSize: 20,
-          lineHeight: 26,
-          textAlign: 'center'
+     iconMenu: {
+          height: 25,
+          width: 25,
+          tintColor: '#000',
+          marginRight: 45,
+          marginTop: 48,
      },
-})
+     icon: {
+          height: 25,
+          width: 25,
+          tintColor: '#000',
+          marginRight: 50,
+          marginTop: 50,
+     },
+});

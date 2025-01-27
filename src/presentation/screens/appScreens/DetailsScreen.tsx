@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { CustomHeader } from '../components/ui';
+import { CustomHeader } from '../../components/ui';
 
 const Details = () => {
      return (

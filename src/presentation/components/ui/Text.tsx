@@ -1,11 +1,10 @@
+import React from "react";
 import { StyleSheet, TextInput, View } from "react-native"
 const Text = () => {
      return (
           <View>
                <TextInput
                     style={styles.input}
-                    //    onChangeText={onChangeNumber}
-                    //    value={number}
                     placeholder="useless placeholder"
                     keyboardType="numeric"
                />
@@ -15,8 +14,8 @@ const Text = () => {
 
 const styles = StyleSheet.create({
      input: {
-          height: 40,
-          margin: 12,
+          height: 25,
+          margin: 25,
           borderWidth: 1,
           padding: 10,
      },

@@ -1,12 +1,10 @@
-import { StackScreenProps } from '@react-navigation/stack';
+import React from 'react';
 import { Button, Text, View } from 'react-native';
-import { RootStackParams } from '../../navigator/StackNavigation';
-
-interface Props extends StackScreenProps<RootStackParams, 'settings'> { }
+import { Background } from '../../components/ui';
 
 const SettingsScreen = ({ navigation }: any) => {
      return (
-          <View style={{ flex: 1, padding: 16 }}>
+          <Background>
                <View
                     style={{
                          flex: 1,
@@ -22,10 +20,6 @@ const SettingsScreen = ({ navigation }: any) => {
                          ESTA ES LA PAGINA DE SETTINGS
                     </Text>
                     <Button
-                         title="Go to Profile Page"
-                         onPress={() => navigation.navigate('profile')}
-                    />
-                    <Button
                          title="openDrawer"
                          onPress={() => navigation.openDrawer()}
                     />
@@ -37,7 +31,7 @@ const SettingsScreen = ({ navigation }: any) => {
                     style={{ fontSize: 16, textAlign: 'center', color: 'grey' }}>
                     www.aboutreact.com
                </Text>
-          </View>
+          </Background>
      );
 };
 export default SettingsScreen;

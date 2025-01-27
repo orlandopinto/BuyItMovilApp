@@ -1,28 +1,28 @@
-import { useState } from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { globalStyles } from '../../../config/theme/theme'
-import { useAuth } from '../../../providers/AuthProvider'
-import { user } from '../../../types/user.type'
-import { Background, CustomButton, CustomHeader, CustomTextInput, Logo } from '../../components/ui'
+import React, { useState } from "react"
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native"
+import Icon from "react-native-vector-icons/Ionicons"
+import { globalStyles } from "../../../config/theme/theme"
+import { Background, CustomButton, CustomHeader, CustomTextInput, Logo } from "../../components/ui"
 
-export default function LoginScreen({ navigation }: any) {
-     const { user, setUser } = useAuth();
+// import { emailValidator } from "../../../helpers/emailValidator"
+// import { nameValidator } from "../../../helpers/nameValidator"
+// import { passwordValidator } from "../../../helpers/passwordValidator"
 
+export default function RegisterScreen({ navigation }: any) {
+     const [name, setName] = useState({ value: '', error: '' })
      const [email, setEmail] = useState({ value: '', error: '' })
      const [password, setPassword] = useState({ value: '', error: '' })
 
-     const onLoginPressed = () => {
+     const onSignUpPressed = () => {
+          // const nameError = nameValidator(name.value)
           // const emailError = emailValidator(email.value)
           // const passwordError = passwordValidator(password.value)
-          // if (emailError || passwordError) {
+          // if (emailError || passwordError || nameError) {
+          //      setName({ ...name, error: nameError })
           //      setEmail({ ...email, error: emailError })
           //      setPassword({ ...password, error: passwordError })
           //      return
           // }
-          const currentUser: user = { name: 'Orlando Pinto', email: 'opinto@gmail.com', isLogged: true }
-          setUser(currentUser)
-          console.log('user: ', user)
-          navigation.navigate('home')
      }
 
      return (
@@ -31,8 +31,16 @@ export default function LoginScreen({ navigation }: any) {
                     <Logo />
                </View>
                <View style={globalStyles.centerContext} collapsable={false}>
-                    <CustomHeader>Bienvenid@</CustomHeader>
+                    <CustomHeader>Crear una cuenta</CustomHeader>
                </View>
+               <CustomTextInput
+                    icon={'terminal-outline'}
+                    placeholder="Nombre de usuario"
+                    autoCorrect={true}
+                    autoCapitalize="none"
+                    value={email.value}
+                    onChangeText={(text) => setEmail({ value: text, error: '' })}
+               />
                <CustomTextInput
                     icon={'mail-outline'}
                     placeholder="Correo electrónico"
@@ -52,16 +60,11 @@ export default function LoginScreen({ navigation }: any) {
                     onChangeText={(text) => setPassword({ value: text, error: '' })}
                     secureTextEntry
                />
-               <View style={styles.forgotPassword} collapsable={false}>
-                    <TouchableOpacity onPress={() => navigation.navigate('resetPassword')}>
-                         <Text style={styles.text}>¿Olvidaste tu contraseña?</Text>
-                    </TouchableOpacity>
-               </View>
-               <CustomButton variant='primary' title={'Iniciar sesión'} onPress={() => navigation.navigate('home')} />
+               <CustomButton variant='primary' title={'Registrarse'} onPress={() => navigation.navigate('home')} buttonWidth="100%" />
                <View style={globalStyles.row}>
                     <Text style={styles.text}>¿Tienes una cuenta? </Text>
-                    <TouchableOpacity onPress={() => navigation.navigate('register')}>
-                         <Text style={styles.link}>Regístrate</Text>
+                    <TouchableOpacity onPress={() => navigation.navigate('login')}>
+                         <Text style={styles.link}>Inicia sesión</Text>
                     </TouchableOpacity>
                </View>
           </Background>
@@ -69,25 +72,21 @@ export default function LoginScreen({ navigation }: any) {
 }
 
 const styles = StyleSheet.create({
-     container: {
-          flex: 1,
+     imageContainer: {
           flexDirection: 'row',
+          justifyContent: 'center',
           alignItems: 'center',
-     },
-     forgotPassword: {
-          alignItems: 'flex-end',
-          marginHorizontal: 11,
-          marginTop: 5,
-          marginBottom: 16,
-     },
-     forgot: {
-          justifyContent: 'flex-end',
-     },
-     text: {
-          fontSize: 17,
+          padding: 0,
+          height: 150,
+          width: 'auto'
      },
      link: {
-          fontSize: 17,
           fontWeight: 'bold',
-     }
+          fontSize: 17
+          //color: theme.colors.primary,
+     },
+     text: {
+          fontSize: 17
+          //color: theme.colors.primary,
+     },
 })
