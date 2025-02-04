@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function DrawerHeader({ title, onPress }: Props) {
-     const refBottomSheet = useRef();
+     const refBottomSheet = useRef<any>();
      return (
           <View style={styles.container}>
                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
@@ -28,7 +28,7 @@ export default function DrawerHeader({ title, onPress }: Props) {
                          fontWeight: 'bold',
                     }}>{title}</Text>
                </View>
-               <TouchableOpacity style={styles.iconContainer} onPress={() => refBottomSheet.current?.open()} >
+               <TouchableOpacity style={styles.iconContainer} onPress={() => refBottomSheet.current.open()} >
                     <Image
                          resizeMode='contain'
                          style={styles.icon}
@@ -36,7 +36,11 @@ export default function DrawerHeader({ title, onPress }: Props) {
                     />
 
                </TouchableOpacity>
-               <BottomSheet bottomSheetRef={refBottomSheet} />
+               <BottomSheet bottomSheetRef={refBottomSheet}>
+                    <View>
+                         <Text>aqui componente</Text>
+                    </View>
+               </BottomSheet>
           </View>
      )
 }

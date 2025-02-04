@@ -9,7 +9,8 @@ export type MainStackParamList = {
      profile: undefined;
      dashboard: undefined;
      settings: undefined;
-     alerts: undefined
+     alerts: undefined;
+     detailsproduct: undefined
 }
 
 

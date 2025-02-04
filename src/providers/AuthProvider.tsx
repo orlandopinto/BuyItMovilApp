@@ -1,28 +1,21 @@
-// react
-import { createContext, Dispatch, ReactElement, ReactNode, SetStateAction, useContext, useState } from "react";
-import { user } from "../types/user.type";
+import React, { createContext, Dispatch, ReactElement, ReactNode, SetStateAction, useContext, useState } from "react";
+import { AuthProfile } from "../domain/entities/AuthProfile";
 
 type AuthContextType = {
-     user: user;
-     setUser: Dispatch<SetStateAction<user>>;
+     authProfile: AuthProfile | null;
+     setAuthProfile: Dispatch<SetStateAction<AuthProfile>>;
 };
 
-const userInitialValue: user = {
-     name: '',
-     email: '',
-     isLogged: false
-}
-
 const AuthContext = createContext<AuthContextType>({
-     user: userInitialValue,
-     setUser: () => { }
+     authProfile: null,
+     setAuthProfile: () => { }
 });
 
 function useAuth(): AuthContextType {
      const context = useContext(AuthContext);
      try {
           if (!context) {
-               throw new Error("useAuth must be used within an AuthProvider");
+               throw new Error("useAuth debe usarse dentro de un AuthProvider");
           }
      } catch (error) {
 
@@ -31,8 +24,9 @@ function useAuth(): AuthContextType {
 }
 
 const AuthProvider = (props: { children: ReactNode }): ReactElement => {
-     const [user, setUser] = useState<user>({} as user);
-     return <AuthContext.Provider {...props} value={{ user, setUser }} />;
+     const [authProfile, setAuthProfile] = useState<AuthProfile>({} as AuthProfile);
+     return <AuthContext.Provider {...props} value={{ authProfile, setAuthProfile }} />;
 };
 
 export { AuthProvider, useAuth };
+

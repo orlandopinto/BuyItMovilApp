@@ -1,6 +1,7 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import RBSheet from 'react-native-raw-bottom-sheet'
+import { colors, Variant } from '../../../config/theme/theme'
 
 const BottomSheet = ({ bottomSheetRef, children }) => {
      return (
@@ -17,7 +18,7 @@ const BottomSheet = ({ bottomSheetRef, children }) => {
                          borderTopRightRadius: 10,
                     },
                     wrapper: {
-                         backgroundColor: 'rgba(0,0,0,0.09)',
+                         backgroundColor: 'rgba(0,0,0,0.5)',
                     },
                     draggableIcon: {
                          backgroundColor: '#e0e0e0',
@@ -33,10 +34,19 @@ const BottomSheet = ({ bottomSheetRef, children }) => {
                     enabled: false,
                }}
           >
-               <View style={{ flex: 1, backgroundColor: 'white' }}>
+               <View style={styles.container}>
                     {children}
                </View>
           </RBSheet>
      )
 }
+
 export default BottomSheet
+
+const styles = StyleSheet.create({
+     container: {
+          flex: 1,
+          backgroundColor: 'white',
+          padding: 10,
+     }
+});

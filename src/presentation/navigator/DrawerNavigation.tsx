@@ -4,6 +4,7 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../config/theme/theme';
+import { AuthProvider } from '../../providers/AuthProvider';
 import DrawerHeader from '../components/sidebar/DrawerHeader';
 import DrawerItems from '../components/sidebar/DrawerItems';
 import Logo from '../components/ui/Logo';
@@ -25,73 +26,75 @@ const Drawer = createDrawerNavigator();
 
 export const DrawerNavigation = () => {
      return (
-          <NavigationContainer>
-               <Drawer.Navigator initialRouteName='splash'
-                    screenOptions={{
-                         //drawerActiveBackgroundColor: 'orange',
-                         // drawerStyle: {
-                         //      backgroundColor: '#fff',
-                         //      width: 300,
-                         // },
-                         // headerStyle: {
-                         //      backgroundColor: '#red',
-                         // },
-                         // headerTintColor: '#000',
-                         // drawerLabelStyle: {
-                         //      color: '#000',
-                         //      fontSize: 14,
-                         // },
-                         header: (props) => (
-                              <DrawerHeader title="" onPress={() => props.navigation.toggleDrawer()} />
-                         )
+          <AuthProvider>
+               <NavigationContainer>
+                    <Drawer.Navigator initialRouteName='splash'
+                         screenOptions={{
+                              //drawerActiveBackgroundColor: 'orange',
+                              // drawerStyle: {
+                              //      backgroundColor: '#fff',
+                              //      width: 300,
+                              // },
+                              // headerStyle: {
+                              //      backgroundColor: '#red',
+                              // },
+                              // headerTintColor: '#000',
+                              // drawerLabelStyle: {
+                              //      color: '#000',
+                              //      fontSize: 14,
+                              // },
+                              header: (props) => (
+                                   <DrawerHeader title="" onPress={() => props.navigation.toggleDrawer()} />
+                              )
 
-                    }}
-                    drawerContent={
-                         (props) => {
-                              return (
-                                   <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-                                        <View style={styles.logo}>
-                                             <Logo />
-                                        </View>
-                                        <DrawerContentScrollView {...props}>
-                                             <DrawerItemList {...props} />
-                                        </DrawerContentScrollView>
-                                        <TouchableOpacity
-                                             onPress={() => props.navigation.navigate('login')}
-                                             style={styles.container}
-                                        >
-                                             <View style={styles.iconContainer}>
-                                                  <Icon name='log-out-outline' size={30} style={styles.icon} />
-                                                  <Text style={{ color: 'white' }}>Logout out</Text>
+                         }}
+                         drawerContent={
+                              (props) => {
+                                   return (
+                                        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
+                                             <View style={styles.logo}>
+                                                  <Logo />
                                              </View>
-                                        </TouchableOpacity>
+                                             <DrawerContentScrollView {...props}>
+                                                  <DrawerItemList {...props} />
+                                             </DrawerContentScrollView>
+                                             <TouchableOpacity
+                                                  onPress={() => props.navigation.navigate('login')}
+                                                  style={styles.container}
+                                             >
+                                                  <View style={styles.iconContainer}>
+                                                       <Icon name='log-out-outline' size={30} style={styles.icon} />
+                                                       <Text style={{ color: 'white' }}>Logout out</Text>
+                                                  </View>
+                                             </TouchableOpacity>
 
-                                   </SafeAreaView>
-                              )
+                                        </SafeAreaView>
+                                   )
+                              }
                          }
-                    }
-               >
-                    {
-                         DrawerItems.map((item, index) => {
-                              return (
-                                   <Drawer.Screen
-                                        key={index}
-                                        name={item.name}
-                                        component={item.component}
-                                        options={{
-                                             ...item.options,
-                                             drawerItemStyle: {
-                                                  ...item.options?.drawerItemStyle,
-                                                  display: item.options?.drawerItemStyle?.display === 'none' ? 'none' : 'flex'
-                                             },
+                    >
+                         {
+                              DrawerItems.map((item, index) => {
+                                   return (
+                                        <Drawer.Screen
+                                             key={index}
+                                             name={item.name}
+                                             component={item.component}
+                                             options={{
+                                                  ...item.options,
+                                                  drawerItemStyle: {
+                                                       ...item.options?.drawerItemStyle,
+                                                       display: item.options?.drawerItemStyle?.display === 'none' ? 'none' : 'flex'
+                                                  },
 
-                                        }}
-                                   />
-                              )
-                         })
-                    }
-               </Drawer.Navigator >
-          </NavigationContainer>
+                                             }}
+                                        />
+                                   )
+                              })
+                         }
+                    </Drawer.Navigator >
+               </NavigationContainer>
+          </AuthProvider>
      );
 };
 

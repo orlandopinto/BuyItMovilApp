@@ -1,11 +1,10 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
 import { Image, Platform, View } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../config/theme/theme';
 import ImageIcons from '../icons/ImageIcons';
-import { AlertsScreen, DashboardScreen, ProfileScreen, HomeScreen, SearchScreen } from '../screens/appScreens';
-import Icon from 'react-native-vector-icons/Ionicons';
-import DrawerHeader from '../components/sidebar/DrawerHeader';
+import { AlertsScreen, DashboardScreen, HomeScreen, ProfileScreen, SearchScreen } from '../screens/appScreens';
 
 const Tab = createBottomTabNavigator();
 

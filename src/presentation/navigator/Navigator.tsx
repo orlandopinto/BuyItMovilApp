@@ -5,7 +5,7 @@ import { LoginScreen, RegisterScreen, ResetPasswordScreen, SplashScreen } from '
 
 const Stack = createNativeStackNavigator();
 
-const AuthorizedStack = ({ navigation }: any) => {
+const AuthorizedStack = () => {
      return (
           <Stack.Navigator initialRouteName='splashScreen'>
                <Stack.Screen name="splashScreen" component={SplashScreen} options={{ headerShown: false }} />

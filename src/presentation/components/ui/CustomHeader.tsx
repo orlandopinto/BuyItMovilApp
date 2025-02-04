@@ -9,6 +9,6 @@ const styles = StyleSheet.create({
      header: {
           color: '#000',
           fontWeight: 'bold',
-          paddingVertical: 12,
+          paddingVertical: 12
      },
 })

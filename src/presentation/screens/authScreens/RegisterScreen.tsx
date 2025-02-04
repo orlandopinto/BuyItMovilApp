@@ -31,11 +31,19 @@ export default function RegisterScreen({ navigation }: any) {
                     <Logo />
                </View>
                <View style={globalStyles.centerContext} collapsable={false}>
-                    <CustomHeader>Crear una cuenta</CustomHeader>
+                    <CustomHeader>Crea una cuenta</CustomHeader>
                </View>
                <CustomTextInput
-                    icon={'terminal-outline'}
-                    placeholder="Nombre de usuario"
+                    icon={'person-outline'}
+                    placeholder="Nombre"
+                    autoCorrect={true}
+                    autoCapitalize="none"
+                    value={email.value}
+                    onChangeText={(text) => setEmail({ value: text, error: '' })}
+               />
+               <CustomTextInput
+                    icon={'person-outline'}
+                    placeholder="Apellido"
                     autoCorrect={true}
                     autoCapitalize="none"
                     value={email.value}
@@ -54,7 +62,15 @@ export default function RegisterScreen({ navigation }: any) {
                />
                <CustomTextInput
                     placeholder="Contraseña"
-                    icon="code-working-outline"
+                    icon="lock-closed-outline"
+                    autoCapitalize="none"
+                    value={password.value}
+                    onChangeText={(text) => setPassword({ value: text, error: '' })}
+                    secureTextEntry
+               />
+               <CustomTextInput
+                    placeholder="Repetir contraseña"
+                    icon="lock-closed-outline"
                     autoCapitalize="none"
                     value={password.value}
                     onChangeText={(text) => setPassword({ value: text, error: '' })}
